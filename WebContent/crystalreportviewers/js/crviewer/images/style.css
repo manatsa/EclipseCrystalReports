@@ -1265,3 +1265,16 @@ a.bolistlinksel:hover
 	font-size:11px;
 	color:#2D62B0;
 }
+
+body{
+		width: 100%;
+		text-align: center;
+		margin: 0 auto
+	}
+	
+#CrystalViewer{
+		width: 100%;
+		text-align: center;
+		margin: 0 auto
+}
+	

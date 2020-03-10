@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <CrystalReportEngine-configuration>
-    <reportlocation>../..</reportlocation>
+    <!-- <reportlocation>../..</reportlocation> -->
     <timeout>0</timeout>
     <ExternalFunctionLibraryClassNames>
     	<classname></classname>

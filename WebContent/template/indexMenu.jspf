@@ -1,0 +1,218 @@
+<%@page import="java.net.URL"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.io.File"%>
+<%@page import="java.util.List"%>
+<%@ page import="java.nio.file.Files" %>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%!
+	List<String> daily=new ArrayList();
+	List<String> weekly=new ArrayList();
+	List<String> monthly=new ArrayList();
+	List<String> quarterly=new ArrayList();
+	List<String> yearly=new ArrayList();
+	List<String> more=new ArrayList();
+%>
+<%
+	
+	File jsp = new File(request.getSession().getServletContext().getRealPath(request.getServletPath())).getParentFile();
+	String dirPath = "Reports/";
+	out.println(jsp.getAbsolutePath());
+
+    //File dir = new File(classLoader.getResource(fileName).getFile());
+   /* File dir = ResourceUtils.getFile("classpath:Reports/");
+    //File is found
+    System.out.println("File Found : " + dir.exists());
+
+    //Read File Content
+*/
+   File dir=new File(jsp.getAbsolutePath()+"/Reports/");
+	File[] reports = dir.listFiles();
+	
+	 for(File file: reports)
+	{
+		if(file.getName().startsWith("Daily")){
+			daily.add(file.getName());
+		}
+		else if(file.getName().startsWith("Weekly")){
+			weekly.add(file.getName());
+		}
+		else if(file.getName().startsWith("Monthly")){
+			monthly.add(file.getName());
+		}
+		else if(file.getName().startsWith("Quarterly")){
+			quarterly.add(file.getName());
+		}else if(file.getName().startsWith("Yearly")){
+			yearly.add(file.getName());
+		}else{
+			more.add(file.getName());
+		}
+	}
+	
+%>
+<div class="row">
+    
+    <div class=" col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="medium">
+                        <div>Daily Reports</div>
+                    </div>
+                </div>
+            </div>
+                <div class="panel-body">
+                	
+                    <c:forEach var="report" items="<%=daily%>">
+				        <a href="reporter.jsp?report_name=${report}" target="_blank">
+				        <c:set value="${report}" scope="session" var="report_name"></c:set>
+		                    <span class="pull-right"><c:out value="${report}"/></span>
+		                    <span class="pull-left"><i class="fa fa-book"></i></span>
+                    	</a><br/>
+				    </c:forEach>
+				    
+                </div>
+            
+        </div>
+    </div>
+   
+   
+   
+   <div class=" col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="medium">
+                        <div>Weekly Reports</div>
+                    </div>
+                </div>
+            </div>
+                <div class="panel-body">
+                	
+                    <c:forEach var="report" items="<%=weekly%>">
+                        <a href="reporter.jsp?report_name=${report}" target="_blank">
+				        <c:set value="${report}" scope="session" var="report_name"></c:set>
+		                    <span class="pull-right"><c:out value="${report}"/></span>
+		                    <span class="pull-left"><i class="fa fa-book"></i></span>
+                    	</a><br/>
+				    </c:forEach>
+				    
+                </div>
+            
+        </div>
+    </div>
+   
+   
+   
+   <div class=" col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="medium">
+                        <div>Monthly Reports</div>
+                    </div>
+                </div>
+            </div>
+                <div class="panel-body">
+                	
+                    <c:forEach var="report" items="<%=monthly%>">
+                        <a href="reporter.jsp?report_name=${report}" target="_blank">
+				        <c:set value="${report}" scope="session" var="report_name"></c:set>
+		                    <span class="pull-right"><c:out value="${report}"/></span>
+		                    <span class="pull-left"><i class="fa fa-book"></i></span>
+                    	</a><br/>
+				    </c:forEach>
+				    
+                </div>
+            
+        </div>
+    </div>
+    
+    
+    
+    <div class=" col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="medium">
+                        <div>Quarterly Reports</div>
+                    </div>
+                </div>
+            </div>
+                <div class="panel-body">
+                	
+                    <c:forEach var="report" items="<%=quarterly%>">
+                        <a href="reporter.jsp?report_name=${report}" target="_blank">
+				        <c:set value="${report}" scope="session" var="report_name"></c:set>
+		                    <span class="pull-right"><c:out value="${report}"/></span>
+		                    <span class="pull-left"><i class="fa fa-book"></i></span>
+                    	</a><br/>
+				    </c:forEach>
+				    
+                </div>
+            
+        </div>
+    </div>
+    
+    
+    <div class=" col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="medium">
+                        <div>Yearly Reports</div>
+                    </div>
+                </div>
+            </div>
+                <div class="panel-body">
+                	
+                    <c:forEach var="report" items="<%=yearly%>">
+                        <a href="reporter.jsp?report_name=${report}" target="_blank">
+				        <c:set value="${report}" scope="session" var="report_name"></c:set>
+		                    <span class="pull-right"><c:out value="${report}"/></span>
+		                    <span class="pull-left"><i class="fa fa-book"></i></span>
+                    	</a><br/>
+				    </c:forEach>
+				    
+                </div>
+            
+        </div>
+    </div>
+    
+    
+    <div class=" col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="medium">
+                        <div>More Reports</div>
+                    </div>
+                </div>
+            </div>
+                <div class="panel-body">
+                	
+                    <c:forEach var="report" items="<%=more%>">
+                        <a href="reporter.jsp?report_name=${report}" target="_blank">
+				        <c:set value="${report}" scope="session" var="report_name"></c:set>
+		                    <span class="pull-right"><c:out value="${report}"/></span>
+		                    <span class="pull-left"><i class="fa fa-book"></i></span>
+                    	</a><br/>
+				    </c:forEach>
+				    
+                </div>
+            
+        </div>
+    </div>
+    
+    
+</div>
+
+<%
+	daily=new ArrayList();
+	weekly=new ArrayList();
+	monthly=new ArrayList();
+	quarterly=new ArrayList();
+	yearly=new ArrayList();
+	more=new ArrayList();
+%>
